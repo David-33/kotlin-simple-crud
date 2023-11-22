@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    host: postgres
+    port: 5432
+
+management:
+  server:
+    port: 8081

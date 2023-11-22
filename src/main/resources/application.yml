@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: simple-crud
+  datasource:
+    host: localhost
+    port: 5435
+    url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/cellular
+    username: simple_crud_user
+    password: simple_crud_pass
+    hikari:
+      maximumPoolSize: 2
+      minimumIdle: 1
+      idleTimeout: 20000
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8080
+  servlet:
+    context-path: /${spring.application.name}
+
+management:
+  server:
+    port: 8082
+  endpoint:
+    health.enabled: true
+    info.enabled: true
+    prometheus.enabled: true
+    env.enabled: true
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: health, info, prometheus, env
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+      percentiles:
+        http.client.requests: 0.95, 0.99
+        http.client.ws.requests: 0.95, 0.99
