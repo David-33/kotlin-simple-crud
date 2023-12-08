@@ -2,6 +2,9 @@ spring:
   datasource:
     host: postgres
     port: 5432
+  data:
+    redis:
+      host: redis
 
 management:
   server:

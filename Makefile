@@ -4,7 +4,7 @@ start:
 	docker-compose up -d
 
 infra:
-	docker-compose up -d mockserver postgres
+	docker-compose up -d mockserver postgres redis
 
 stop:
 	docker-compose down
