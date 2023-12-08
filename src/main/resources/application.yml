@@ -14,9 +14,12 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      username: simple_crud_user
+      password: simple_crud_pass
 
 server:
   port: 8080
@@ -27,11 +30,11 @@ management:
   server:
     port: 8082
   endpoint:
-    health.enabled: true
     info.enabled: true
     prometheus.enabled: true
     env.enabled: true
     health:
+      enabled: true
       probes:
         enabled: true
   endpoints:
